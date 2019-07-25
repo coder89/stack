@@ -219,7 +219,6 @@ class StackView extends React.Component<Props, State> {
         screenProps={this.props.screenProps}
         navigation={navigation}
         component={SceneComponent}
-        pointerEvents='none'
       />
     );
   };
