@@ -219,6 +219,7 @@ class StackView extends React.Component<Props, State> {
         screenProps={this.props.screenProps}
         navigation={navigation}
         component={SceneComponent}
+        pointerEvents='none'
       />
     );
   };
@@ -267,6 +268,7 @@ class StackView extends React.Component<Props, State> {
       onGestureBegin,
       onGestureCanceled,
       onGestureEnd,
+      ...rest
     } = this.props;
 
     const { mode, ...config } = navigationConfig;
@@ -300,6 +302,7 @@ class StackView extends React.Component<Props, State> {
         descriptors={descriptors}
         {...transitionPreset}
         {...config}
+        {...rest}
       />
     );
   }

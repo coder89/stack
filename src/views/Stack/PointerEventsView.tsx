@@ -40,7 +40,7 @@ export default class PointerEventsView extends React.Component<Props> {
     onChange(
       this.pointerEventsEnabled,
       call([this.pointerEventsEnabled], ([value]) => {
-        const pointerEvents = this.props.active && value ? 'box-none' : 'none';
+        const pointerEvents = this.props.active && value ? 'none' : 'none';
 
         this.root && this.root.setNativeProps({ pointerEvents });
       })
@@ -56,7 +56,7 @@ export default class PointerEventsView extends React.Component<Props> {
     return (
       <React.Fragment>
         <Animated.Code exec={this.exec} />
-        <View ref={c => (this.root = c)} {...rest} />
+        <View ref={c => (this.root = c)} pointerEvents='none' {...rest} />
       </React.Fragment>
     );
   }

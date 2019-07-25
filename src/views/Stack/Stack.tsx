@@ -203,7 +203,7 @@ export default class Stack extends React.Component<Props, State> {
         <View
           style={styles.container}
           onLayout={this.handleLayout}
-          pointerEvents={layout.height && layout.width ? 'box-none' : 'none'}
+          pointerEvents={layout.height && layout.width ? 'none' : 'none'}
         >
           {routes.map((route, index, self) => {
             const focused = focusedRoute.key === route.key;
@@ -247,7 +247,7 @@ export default class Stack extends React.Component<Props, State> {
                 importantForAccessibility={
                   focused ? 'auto' : 'no-hide-descendants'
                 }
-                pointerEvents="box-none"
+                pointerEvents="none"
                 style={[
                   StyleSheet.absoluteFill,
                   headerMode === 'float' &&

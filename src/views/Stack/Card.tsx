@@ -468,7 +468,7 @@ export default class Card extends React.Component<Props> {
 
     return (
       <StackGestureContext.Provider value={this.gestureRef}>
-        <View pointerEvents="box-none" {...rest}>
+        <View pointerEvents="none" {...rest}>
           <Animated.Code exec={this.exec} />
           {overlayEnabled && overlayStyle ? (
             <Animated.View
@@ -478,7 +478,7 @@ export default class Card extends React.Component<Props> {
           ) : null}
           <Animated.View
             style={[styles.container, containerStyle]}
-            pointerEvents="box-none"
+            pointerEvents="none"
           >
             <PanGestureHandler
               ref={this.gestureRef}
@@ -487,7 +487,7 @@ export default class Card extends React.Component<Props> {
               onHandlerStateChange={handleGestureEvent}
               {...this.gestureActivationCriteria()}
             >
-              <Animated.View style={[StyleSheet.absoluteFill, cardStyle]}>
+              <Animated.View style={[StyleSheet.absoluteFill, cardStyle]} pointerEvents="none">
                 {shadowEnabled && !transparent ? (
                   <Animated.View
                     style={[styles.shadow, shadowStyle]}
