@@ -459,6 +459,13 @@ diff -Naur node_modules/@react-navigation/stack/src/views/Stack/Card.tsx src/ven
                    style={[
                      styles.shadow,
                      gestureDirection === 'horizontal'
+@@ -493,5 +493,5 @@
+                 />
+               ) : null}
+-              <View ref={this.content} style={[styles.content, contentStyle]}>
++              <View ref={this.content} style={[styles.content, contentStyle] as any}>
+                 <StackGestureRefContext.Provider value={this.gestureRef}>
+                   <CardAnimationContext.Provider value={animationContext}>
 diff -Naur node_modules/@react-navigation/stack/src/views/Stack/CardContainer.tsx src/vendor/views/Stack/CardContainer.tsx
 --- node_modules/@react-navigation/stack/src/views/Stack/CardContainer.tsx	2020-01-23 12:34:48.000000000 +0100
 +++ src/vendor/views/Stack/CardContainer.tsx	2020-01-23 12:43:56.000000000 +0100
