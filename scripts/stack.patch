@@ -424,15 +424,41 @@ diff -Naur node_modules/@react-navigation/stack/src/views/Header/HeaderTitle.tsx
 diff -Naur node_modules/@react-navigation/stack/src/views/Stack/Card.tsx src/vendor/views/Stack/Card.tsx
 --- node_modules/@react-navigation/stack/src/views/Stack/Card.tsx	2020-01-23 12:34:48.000000000 +0100
 +++ src/vendor/views/Stack/Card.tsx	2020-01-23 12:43:56.000000000 +0100
-@@ -485,7 +485,7 @@
-                   pointerEvents="none"
-                 />
-               ) : null}
--              <View ref={this.content} style={[styles.content, contentStyle]}>
-+              <View ref={this.content} style={[styles.content, contentStyle] as any}>
-                 <StackGestureRefContext.Provider value={this.gestureRef}>
-                   <CardAnimationContext.Provider value={animationContext}>
-                     {children}
+@@ -12,20 +12,20 @@
+ import {
+   PanGestureHandler,
+   State as GestureState,
+   PanGestureHandlerGestureEvent,
+ } from 'react-native-gesture-handler';
+-import { Route } from '@react-navigation/native';
+ import { EdgeInsets } from 'react-native-safe-area-context';
+ import Color from 'color';
+ import StackGestureRefContext from '../../utils/GestureHandlerRefContext';
+ import CardAnimationContext from '../../utils/CardAnimationContext';
+ import getDistanceForDirection from '../../utils/getDistanceForDirection';
+ import getInvertedMultiplier from '../../utils/getInvertedMultiplier';
+ import memoize from '../../utils/memoize';
+ import {
+   Scene,
++  Route,
+   TransitionSpec,
+   StackCardStyleInterpolator,
+   GestureDirection,
+   Layout,
+ } from '../../types';
+@@ -477,11 +477,11 @@
+             enabled={layout.width !== 0 && gestureEnabled}
+             onGestureEvent={handleGestureEvent}
+             onHandlerStateChange={this.handleGestureStateChange}
+             {...this.gestureActivationCriteria()}
+           >
+-            <Animated.View style={[styles.container, cardStyle]}>
++            <Animated.View style={[styles.container, cardStyle] as any}>
+               {shadowEnabled && shadowStyle && !isTransparent ? (
+                 <Animated.View
+                   style={[
+                     styles.shadow,
+                     gestureDirection === 'horizontal'
 diff -Naur node_modules/@react-navigation/stack/src/views/Stack/CardContainer.tsx src/vendor/views/Stack/CardContainer.tsx
 --- node_modules/@react-navigation/stack/src/views/Stack/CardContainer.tsx	2020-01-23 12:34:48.000000000 +0100
 +++ src/vendor/views/Stack/CardContainer.tsx	2020-01-23 12:43:56.000000000 +0100
@@ -457,7 +483,7 @@ diff -Naur node_modules/@react-navigation/stack/src/views/Stack/CardContainer.ts
  
  type Props = TransitionPreset & {
    index: number;
-@@ -158,7 +164,7 @@
+@@ -159,7 +165,7 @@
            ? { marginTop: headerHeight }
            : null
        }
