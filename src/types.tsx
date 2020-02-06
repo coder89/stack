@@ -234,9 +234,9 @@ export type TransitionProps = {
 export type TransitionConfig = {
   transitionSpec: {
     timing: Function;
-    duration: number
-    easing: EasingFunction
-    useNativeDriver: boolean
+    duration?: number
+    easing?: EasingFunction
+    useNativeDriver?: boolean
   };
   screenInterpolator: SceneInterpolator;
   containerStyle?: StyleProp<ViewStyle>;
